@@ -44,9 +44,6 @@ public class BoTree1 {
     //int[] input = {1,4,7,9,8,6,5,3,0,2};
     //int[] input = {2,1,4,3,6,5,8,7,9,0};
 
-    //sequence of 0 TO 9
-    int[] seq = {0,1,2,3,4,5,6,7,8,9};
-
     //used variable
     int top = -1;//to check top of the sequence in stack pushed
     int check = 0;//temp variable
@@ -56,25 +53,25 @@ public class BoTree1 {
     System.out.println("Output for: " + Arrays.toString(input));
 
     //LOGIC
-    for (; seq_index < input.length ; seq_index++) {
-      if (input[seq_index] <= top) {
+    for (; input_index < input.length ; input_index++) {
+      if (input[input_index] <= top) {
         check = s.pop();
       }
-      else if (input[seq_index] > top) {
+      else if (input[input_index] > top) {
         //store 'seq' in Stack , also in integers 0 through 9 in order
-        for (; input_index <= input[seq_index] ;input_index++) {
-          s.push(seq[input_index]);
-          top = seq[input_index];
+        for (; seq_index <= input[input_index] ;seq_index++) {
+          s.push(seq_index);
+          top = seq_index;
         }
         check = s.pop();
       }
 
       //checking of POPed and 'input' variable
-      if (input[seq_index] == check) {
-        System.out.println("Ok @ "+input[seq_index]);
+      if (input[input_index] == check) {
+        System.out.println("Ok @ "+input[input_index]);
       }
       else {
-        System.out.println("Not Ok @ "+input[seq_index]+" , Sequence is invalid?");
+        System.out.println("Not Ok @ "+input[input_index]+" , Sequence is invalid?");
         break;
       }
     }//1st for end
